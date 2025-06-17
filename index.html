@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Zwerfafval - Voor een Schoner Nederland</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .fact-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .solution-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tips-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tip-item {
+            background: #f8f9fa;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
+            transition: background 0.3s ease;
+        }
+
+        .tip-item:hover {
+            background: #e9ecef;
+        }
+
+        .tip-item h3 {
+            color: #28a745;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-counter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            color: #2c3e50;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats-counter {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🌱 Stop Zwerfafval</a>
+            <ul class="nav-links">
+                <li><a href="#probleem">Het Probleem</a></li>
+                <li><a href="#oplossingen">Oplossingen</a></li>
+                <li><a href="#tips">Tips</a></li>
+                <li><a href="#actie">Doe Mee</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Stop Zwerfafval, Start Verandering</h1>
+            <p>Samen maken we Nederland schoner. Elke kleine actie telt in de strijd tegen zwerfafval.</p>
+            <a href="#actie" class="cta-button">Doe Nu Mee!</a>
+        </section>
+
+        <section id="probleem" class="section">
+            <div class="container">
+                <h2>Het Probleem van Zwerfafval</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+                    Zwerfafval is een groeiend probleem dat onze natuur, steden en welzijn bedreigt.
+                </p>
+                
+                <div class="stats-counter">
+                    <div class="stat">
+                        <span class="stat-number">4,5 miljard</span>
+                        <span>Peuken per jaar</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">€150 miljoen</span>
+                        <span>Opruimkosten</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12 jaar</span>
+                        <span>Afbreektijd kauwgom</span>
+                    </div>
+                </div>
+
+                <div class="facts-grid">
+                    <div class="fact-card">
+                        <span class="fact-number">🐋</span>
+                        <h3>Zeeleven in Gevaar</h3>
+                        <p>Plastic afval bedreigt zeedieren. Jaarlijks sterven miljoenen dieren door zwerfafval.</p>
+                    </div>
+                    <div class="fact-card">
+                        <span class="fact-number">🏙️</span>
+                        <h3>Vervuilde Steden</h3>
+                        <p>Zwerfafval maakt onze straten en parken minder aantrekkelijk en verlaagt de leefkwaliteit.</p>
+                    </div>
+                    <div class="fact-card">
+                        <span class="fact-number">💰</span>
+                        <h3>Hoge Kosten</h3>
+                        <p>Gemeenten besteden jaarlijks miljoenen aan het opruimen van zwerfafval.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="oplossingen" class="section">
+            <div class="container">
+                <h2>Oplossingen voor een Schoner Nederland</h2>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">♻️</div>
+                        <h3>Recycling Verbeteren</h3>
+                        <p>Meer en betere recyclingmogelijkheden in de openbare ruimte.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">👥</div>
+                        <h3>Bewustwording</h3>
+                        <p>Educatie en campagnes om mensen bewust te maken van het probleem.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">📱</div>
+                        <h3>Technologie</h3>
+                        <p>Apps en slimme prullenbakken die helpen bij afvalpreventie.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">⚖️</div>
+                        <h3>Wetgeving</h3>
+                        <p>Strengere handhaving en boetes voor het weggooien van afval.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <div class="container">
+                <h2>Praktische Tips</h2>
+                <div class="tips-list">
+                    <div class="tip-item">
+                        <h3>🗑️ Neem je afval mee</h3>
+                        <p>Geen prullenbak in de buurt? Stop je afval in je tas of zak tot je er een vindt.</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>🚶‍♀️ Adopteer een stukje straat</h3>
+                        <p>Houd het gebied rond je huis of werk schoon door regelmatig zwerfafval op te ruimen.</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>📱 Meld vervuiling</h3>
+                        <p>Gebruik apps zoals BuitenBeter om grote vervuilingen te melden bij je gemeente.</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>🎒 Ga bewust op pad</h3>
+                        <p>Neem een extra zakje mee tijdens wandelingen om onderweg afval op te ruimen.</p>
+                    </div>
+                    <div class="tip-item">
+                        <h3>👶 Geef het goede voorbeeld</h3>
+                        <p>Kinderen kijken naar volwassenen. Laat zien hoe je verantwoordelijk omgaat met afval.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="actie" class="section">
+            <div class="container">
+                <h2>Doe Mee aan de Verandering</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+                    Elke bijdrage, hoe klein ook, maakt verschil. Start vandaag nog!
+                </p>
+                <div style="text-align: center;">
+                    <a href="https://www.nederlanschoon.nl" class="cta-button" target="_blank">Vind Lokale Acties</a>
+                    <a href="https://www.buitenbeter.nl" class="cta-button" target="_blank" style="margin-left: 1rem;">Meld Vervuiling</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Stop Zwerfafval. Samen voor een schoner Nederland. 🇳🇱</p>
+            <p>Gemaakt met ❤️ voor onze mooie natuur</p>
+        </div>
+    </footer>
+
+    <a href="#" class="scroll-to-top" id="scrollToTop">↑</a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add some interactive animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
