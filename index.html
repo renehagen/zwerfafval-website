@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Zwerfafval - Voor een Schoner Nederland</title>
+    <title>Stop de Plasticsoep - Tijd voor Actie!</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,6 @@
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
 
         .container {
@@ -25,75 +24,372 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><path d="M0,50 Q250,0 500,50 T1000,50 L1000,100 L0,100 Z"/></svg>') no-repeat center bottom;
+            background-size: cover;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
         nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main sections */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        section:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        /* Text styling */
+        .highlight-text {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 2px solid #17a2b8;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        /* Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Food chain visualization */
+        .food-chain {
+            background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .chain-level {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .chain-arrow {
+            font-size: 2rem;
+            color: #f44336;
+            margin: 0 1rem;
+        }
+
+        /* Biomassa explanation */
+        .biomassa-explanation {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #667eea;
+        }
+
+        /* Charts */
+        .chart-container {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 300px;
+            margin: 2rem 0;
+        }
+
+        .bar {
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 5px 5px 0 0;
+            min-width: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .bar-value {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+            transform: rotate(-90deg);
+            white-space: nowrap;
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            transform: rotate(-45deg);
+            white-space: nowrap;
+        }
+
+        /* DDT concentration pyramid */
+        .ddt-pyramid {
+            background: linear-gradient(to bottom, #ffecb3, #fff8e1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .pyramid-level {
+            background: white;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-size: 1.8rem;
+        /* Plastic lifespan */
+        .plastic-lifespan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .plastic-item {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .plastic-item:nth-child(n) {
+            animation-delay: calc(0.1s * var(--index));
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .plastic-years {
+            font-size: 2rem;
             font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
-        .nav-links {
+        /* Waste data list */
+        .waste-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .waste-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
             display: flex;
-            list-style: none;
-            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #667eea;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .waste-count {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
         }
 
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        main {
-            margin-top: 80px;
-        }
-
-        .hero {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        /* Action section */
+        .action-section {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
             color: white;
             text-align: center;
-            padding: 4rem 0;
+        }
+
+        .action-section h2 {
+            color: white;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
-            border-radius: 20px;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .action-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .action-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
+        /* Call to action button */
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #ff6b6b, #ee5a52);
@@ -102,326 +398,507 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.2rem;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
         }
 
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            margin: 2rem 0;
-            padding: 3rem 0;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .fact-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .fact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .fact-number {
-            font-size: 3rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .solution-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border-left: 5px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .solution-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .tips-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tip-item {
-            background: #f8f9fa;
-            margin: 1rem 0;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 5px solid #28a745;
-            transition: background 0.3s ease;
-        }
-
-        .tip-item:hover {
-            background: #e9ecef;
-        }
-
-        .tip-item h3 {
-            color: #28a745;
-            margin-bottom: 0.5rem;
-        }
-
+        /* Footer */
         footer {
-            background: rgba(44, 62, 80, 0.95);
+            background: #333;
             color: white;
             text-align: center;
             padding: 2rem 0;
-            margin-top: 2rem;
-            backdrop-filter: blur(10px);
+            margin-top: 3rem;
         }
 
-        .stats-counter {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            color: #2c3e50;
-            min-width: 150px;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-
+        /* Responsive design */
         @media (max-width: 768px) {
-            .nav-links {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
                 flex-direction: column;
                 gap: 1rem;
             }
-
-            .hero h1 {
-                font-size: 2rem;
+            
+            section {
+                margin: 1rem 0;
+                padding: 2rem;
             }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .stats-counter {
-                flex-direction: column;
-                align-items: center;
+            
+            .bar-chart {
+                height: 200px;
             }
         }
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #667eea;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        /* Animations */
+        .bounce {
+            animation: bounce 2s infinite;
         }
 
-        .scroll-to-top.visible {
-            opacity: 1;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="container">
-            <a href="#" class="logo">🌱 Stop Zwerfafval</a>
-            <ul class="nav-links">
-                <li><a href="#probleem">Het Probleem</a></li>
-                <li><a href="#oplossingen">Oplossingen</a></li>
-                <li><a href="#tips">Tips</a></li>
-                <li><a href="#actie">Doe Mee</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>🌊 STOP DE PLASTICSOEP! 🌊</h1>
+            <p>Samen kunnen we het verschil maken voor onze oceanen</p>
+        </div>
     </header>
 
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#probleem">Het Probleem</a></li>
+                <li><a href="#voedselketen">Voedselketen</a></li>
+                <li><a href="#reducenten">Gevolgen</a></li>
+                <li><a href="#cijfers">Schokkende Cijfers</a></li>
+                <li><a href="#levensduur">Plastic Levensduur</a></li>
+                <li><a href="#onderzoek">Ons Onderzoek</a></li>
+                <li><a href="#actie">Doe Mee!</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <main class="container">
-        <section class="hero">
-            <h1>Stop Zwerfafval, Start Verandering</h1>
-            <p>Samen maken we Nederland schoner. Elke kleine actie telt in de strijd tegen zwerfafval.</p>
-            <img src="Model-Y-2-Hero-Desktop.jpg" alt="Schone mobiliteit" style="max-width: 100%; height: auto; border-radius: 15px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <a href="#actie" class="cta-button">Doe Nu Mee!</a>
+        <section id="probleem">
+            <h2>🚨 Het Plastic Probleem</h2>
+            
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Doordat mensen plastic op straat gooien, komt het in de natuur terecht, ook in zee. Het 
+                plastic breekt heel langzaam af en valt langzaam uit elkaar in microplastics. 
+                <strong>Microplastics zijn heel klein.</strong>
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">5g</span>
+                    <p>Plastic per week dat een gemiddeld persoon eet - ongeveer gelijk aan een bankpas!</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <p>Plastic tassen eet een mens gemiddeld per jaar</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">11</span>
+                    <p>Olympische zwembaden vol plastic belanden elk uur in de zee</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">11 miljoen</span>
+                    <p>Ton plastic per jaar in de oceaan - en dit wordt alsmaar meer!</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Dramatische Toename</h3>
+                <p>In de afgelopen 20 jaar is er evenveel plastic geproduceerd als in de 80 jaar ervoor. 
+                In de komende 10 jaar verdubbelen als we nu geen actie ondernemen, waardoor het plastic afval 
+                in de oceaan tegen 2050 verviervoudigt.</p>
+            </div>
         </section>
 
-        <section id="probleem" class="section">
-            <div class="container">
-                <h2>Het Probleem van Zwerfafval</h2>
-                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
-                    Zwerfafval is een groeiend probleem dat onze natuur, steden en welzijn bedreigt.
-                </p>
+        <section id="voedselketen">
+            <h2>🐟 Plastic in de Voedselketen</h2>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                De eerste consumenten, kleine zeedieren (zoals plankton), zien het plastic voor voedsel 
+                aan en eten het plastic in de zee op. De microplastics bevatten delen die giftig zijn.
+            </p>
+
+            <div class="food-chain">
+                <div class="chain-level">
+                    <div>🦠 <strong>Eerste consumenten (plankton)</strong></div>
+                    <div class="chain-arrow">→</div>
+                    <div>Het plastic komt in de magen van de eerste consumenten, waardoor ze het gevoel hebben 
+                    dat ze vol zitten en dus niks meer eten. Daardoor sterven ze, omdat ze ondervoed zijn.</div>
+                </div>
+                <div class="chain-level">
+                    <div>🐟 <strong>Tweede consumenten (grote zeedieren)</strong></div>
+                    <div class="chain-arrow">→</div>
+                    <div>Eten de eerste consumenten op. Het plastic wat in het lichaam van de eerste consumenten zit, 
+                    komt nu ook in de magen van de tweede consumenten terecht.</div>
+                </div>
+                <div class="chain-level">
+                    <div>👥 <strong>Derde consumenten (mensen)</strong></div>
+                    <div class="chain-arrow">→</div>
+                    <div>De tweede consumenten worden opgegeten door mensen. Zo komt het plastic uiteindelijk 
+                    ook in onze maag terecht, waardoor je dus je eigen plastic eet!</div>
+                </div>
+            </div>
+
+            <div class="biomassa-explanation">
+                <h3>📈 Biomassa Concentratie</h3>
+                <p>In de voedselketen wordt het plastic dus doorgegeven aan het volgende trofische 
+                niveau, omdat het te langzaam afbreekt.</p>
                 
-                <div class="stats-counter">
-                    <div class="stat">
-                        <span class="stat-number">4,5 miljard</span>
-                        <span>Peuken per jaar</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">€150 miljoen</span>
-                        <span>Opruimkosten</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">12 jaar</span>
-                        <span>Afbreektijd kauwgom</span>
-                    </div>
-                </div>
+                <p><strong>De biomassa van het plastic wordt in verhouding ook steeds meer naar mate het hoger 
+                in de voedselketen komt.</strong> Want hoe hoger het komt in de voedselketen, hoe minder biomassa 
+                het volgende trofische niveau bevat. De biomassa van het plastic blijft echter wel gelijk en 
+                neemt niet af waardoor er naar verhouding steeds meer plastic is als je hoger in de voedselketen komt.</p>
+            </div>
 
-                <div class="facts-grid">
-                    <div class="fact-card">
-                        <span class="fact-number">🐋</span>
-                        <h3>Zeeleven in Gevaar</h3>
-                        <p>Plastic afval bedreigt zeedieren. Jaarlijks sterven miljoenen dieren door zwerfafval.</p>
-                    </div>
-                    <div class="fact-card">
-                        <span class="fact-number">🏙️</span>
-                        <h3>Vervuilde Steden</h3>
-                        <p>Zwerfafval maakt onze straten en parken minder aantrekkelijk en verlaagt de leefkwaliteit.</p>
-                    </div>
-                    <div class="fact-card">
-                        <span class="fact-number">💰</span>
-                        <h3>Hoge Kosten</h3>
-                        <p>Gemeenten besteden jaarlijks miljoenen aan het opruimen van zwerfafval.</p>
-                    </div>
+            <div class="ddt-pyramid">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Concentratie in de Voedselketen</h3>
+                <div class="pyramid-level">
+                    <span>🐦 Fish-Eating Birds</span>
+                    <span style="font-weight: bold; color: #d32f2f;">10,000,000</span>
+                </div>
+                <div class="pyramid-level">
+                    <span>🐟 Large Fish</span>
+                    <span style="font-weight: bold; color: #f57c00;">1,000,000</span>
+                </div>
+                <div class="pyramid-level">
+                    <span>🐠 Small Fish</span>
+                    <span style="font-weight: bold; color: #fbc02d;">100,000</span>
+                </div>
+                <div class="pyramid-level">
+                    <span>🦐 Zooplankton</span>
+                    <span style="font-weight: bold; color: #689f38;">10,000</span>
+                </div>
+                <div class="pyramid-level">
+                    <span>🌱 Producers</span>
+                    <span style="font-weight: bold; color: #1976d2;">1,000</span>
+                </div>
+                <div class="pyramid-level">
+                    <span>💧 Water</span>
+                    <span style="font-weight: bold;">1</span>
+                </div>
+            </div>
+
+            <div class="highlight-text">
+                Zo eet je uiteindelijk je eigen plastic terug! 😱
+            </div>
+        </section>
+
+        <section id="reducenten">
+            <h2>⚠️ Gevolgen voor het Ecosysteem</h2>
+            
+            <div class="info-box">
+                <h3>🐾 Impact op Dieren</h3>
+                <p>Ook raken er veel dieren verstrikt in plastic, waardoor het sterftecijfer bij dieren stijgt en 
+                de kans op uitsterven van een diersoort toeneemt. Als er van een bepaalde diersoort 
+                minder komen, kan het ecosysteem verstoord worden doordat er voor andere 
+                diersoorten dan minder voedsel beschikbaar is. Zo raken deze dieren ook ondervoed en 
+                sterven deze dieren langzaam.</p>
+            </div>
+
+            <div class="warning-box">
+                <h3>☕ Plastic in Warme Dranken</h3>
+                <p>Als je in een plastic beker een warme drank doet, dan laten er ook plastic deeltjes los, 
+                die je vervolgens opdrinkt.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">9/10</span>
+                    <p>Zeevogels heeft plastic in de maag!</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1/3</span>
+                    <p>Zeeschildpadden heeft plastic in de maag!</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50%+</span>
+                    <p>Van de walvissen en dolfijnen heeft plastic in de maag!</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">2050</span>
+                    <p>Tegen dit jaar zal plastic vervuiling onherstelbare schade aanrichten als er geen actie wordt ondernomen</p>
+                </div>
+            </div>
+
+            <div class="highlight-text">
+                <strong>Aan het eind van de eeuw zal de plasticvervuiling een onherstelbare schade aanrichten 
+                aan het ecosysteem, als er geen actie wordt ondernomen om de plastic soep te 
+                verminderen.</strong>
+            </div>
+        </section>
+
+        <section id="levensduur">
+            <h2>⏱️ Hoe Lang Duurt het Voordat Plastic Afbreekt?</h2>
+            
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                Als het plastic in zee komt dan breekt het heel langzaam of niet af. Bekijk hieronder de schokkende cijfers:
+            </p>
+
+            <div class="plastic-lifespan">
+                <div class="plastic-item" style="--index: 1">
+                    <span class="plastic-years">20 jaar</span>
+                    <div>Plastic tas</div>
+                </div>
+                <div class="plastic-item" style="--index: 2">
+                    <span class="plastic-years">30 jaar</span>
+                    <div>Plastic wegwerpbeker</div>
+                </div>
+                <div class="plastic-item" style="--index: 3">
+                    <span class="plastic-years">200 jaar</span>
+                    <div>Plastic rietje</div>
+                </div>
+                <div class="plastic-item" style="--index: 4">
+                    <span class="plastic-years">400 jaar</span>
+                    <div>6-pack met plastic ringen</div>
+                </div>
+                <div class="plastic-item" style="--index: 5">
+                    <span class="plastic-years">450 jaar</span>
+                    <div>Plastic flesje</div>
+                </div>
+                <div class="plastic-item" style="--index: 6">
+                    <span class="plastic-years">450 jaar</span>
+                    <div>Plastic bekertje</div>
+                </div>
+                <div class="plastic-item" style="--index: 7">
+                    <span class="plastic-years">500 jaar</span>
+                    <div>Koffiecup</div>
+                </div>
+                <div class="plastic-item" style="--index: 8">
+                    <span class="plastic-years">500 jaar</span>
+                    <div>Wegwerpluier</div>
+                </div>
+                <div class="plastic-item" style="--index: 9">
+                    <span class="plastic-years">500 jaar</span>
+                    <div>Plastic tandenborstel</div>
                 </div>
             </div>
         </section>
 
-        <section id="oplossingen" class="section">
-            <div class="container">
-                <h2>Oplossingen voor een Schoner Nederland</h2>
-                <div class="solutions-grid">
-                    <div class="solution-card">
-                        <div class="solution-icon">♻️</div>
-                        <h3>Recycling Verbeteren</h3>
-                        <p>Meer en betere recyclingmogelijkheden in de openbare ruimte.</p>
+        <section id="onderzoek">
+            <h2>🔍 Ons Onderzoek in Utrecht</h2>
+            
+            <div class="info-box">
+                <h3>📍 Locatie en Methode</h3>
+                <p><strong>Dit hebben wij in een halfuur opgeraapt - dit was nog net niet in de binnenstad 
+                van Utrecht!</strong> In de grafiek zie je hoeveel afval op straat ligt en van de 
+                sigarettenpeuken was er nog veel meer. We hopen dat als mensen 
+                deze grafiek zien hoeveel afval er eigenlijk is, dat we niet zomaar afval op 
+                straat gooien.</p>
+            </div>
+            
+            <div class="chart-container">
+                <h3>Afval gevonden in Utrecht - Totaal: 199 stuks</h3>
+                <div class="bar-chart">
+                    <div class="bar" style="height: 190px;">
+                        <div class="bar-value">75</div>
+                        <div class="bar-label">Sigaretten-peuken</div>
                     </div>
-                    <div class="solution-card">
-                        <div class="solution-icon">👥</div>
-                        <h3>Bewustwording</h3>
-                        <p>Educatie en campagnes om mensen bewust te maken van het probleem.</p>
+                    <div class="bar" style="height: 115px;">
+                        <div class="bar-value">46</div>
+                        <div class="bar-label">Papier/Karton</div>
                     </div>
-                    <div class="solution-card">
-                        <div class="solution-icon">📱</div>
-                        <h3>Technologie</h3>
-                        <p>Apps en slimme prullenbakken die helpen bij afvalpreventie.</p>
+                    <div class="bar" style="height: 85px;">
+                        <div class="bar-value">34</div>
+                        <div class="bar-label">Plastic</div>
                     </div>
-                    <div class="solution-card">
-                        <div class="solution-icon">⚖️</div>
-                        <h3>Wetgeving</h3>
-                        <p>Strengere handhaving en boetes voor het weggooien van afval.</p>
+                    <div class="bar" style="height: 22px;">
+                        <div class="bar-value">9</div>
+                        <div class="bar-label">Aluminium-folie</div>
+                    </div>
+                    <div class="bar" style="height: 17px;">
+                        <div class="bar-value">7</div>
+                        <div class="bar-label">Snoep-papiertjes</div>
+                    </div>
+                    <div class="bar" style="height: 12px;">
+                        <div class="bar-value">5</div>
+                        <div class="bar-label">Metaal</div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="tips" class="section">
-            <div class="container">
-                <h2>Praktische Tips</h2>
-                <div class="tips-list">
-                    <div class="tip-item">
-                        <h3>🗑️ Neem je afval mee</h3>
-                        <p>Geen prullenbak in de buurt? Stop je afval in je tas of zak tot je er een vindt.</p>
-                    </div>
-                    <div class="tip-item">
-                        <h3>🚶‍♀️ Adopteer een stukje straat</h3>
-                        <p>Houd het gebied rond je huis of werk schoon door regelmatig zwerfafval op te ruimen.</p>
-                    </div>
-                    <div class="tip-item">
-                        <h3>📱 Meld vervuiling</h3>
-                        <p>Gebruik apps zoals BuitenBeter om grote vervuilingen te melden bij je gemeente.</p>
-                    </div>
-                    <div class="tip-item">
-                        <h3>🎒 Ga bewust op pad</h3>
-                        <p>Neem een extra zakje mee tijdens wandelingen om onderweg afval op te ruimen.</p>
-                    </div>
-                    <div class="tip-item">
-                        <h3>👶 Geef het goede voorbeeld</h3>
-                        <p>Kinderen kijken naar volwassenen. Laat zien hoe je verantwoordelijk omgaat met afval.</p>
-                    </div>
+            <h3>📋 Volledige Lijst van Gevonden Afval</h3>
+            <div class="waste-list">
+                <div class="waste-item">
+                    <span>Sigarettenpeuken</span>
+                    <span class="waste-count">75</span>
                 </div>
+                <div class="waste-item">
+                    <span>Papier/Karton</span>
+                    <span class="waste-count">46</span>
+                </div>
+                <div class="waste-item">
+                    <span>Plastic</span>
+                    <span class="waste-count">34</span>
+                </div>
+                <div class="waste-item">
+                    <span>Aluminiumfolie</span>
+                    <span class="waste-count">9</span>
+                </div>
+                <div class="waste-item">
+                    <span>Snoeppapiertjes</span>
+                    <span class="waste-count">7</span>
+                </div>
+                <div class="waste-item">
+                    <span>Metaal</span>
+                    <span class="waste-count">5</span>
+                </div>
+                <div class="waste-item">
+                    <span>Papieren lepel</span>
+                    <span class="waste-count">3</span>
+                </div>
+                <div class="waste-item">
+                    <span>Blikje</span>
+                    <span class="waste-count">3</span>
+                </div>
+                <div class="waste-item">
+                    <span>Plastic rietjes</span>
+                    <span class="waste-count">2</span>
+                </div>
+                <div class="waste-item">
+                    <span>Satéprikker</span>
+                    <span class="waste-count">2</span>
+                </div>
+                <div class="waste-item">
+                    <span>Plastic vork</span>
+                    <span class="waste-count">2</span>
+                </div>
+                <div class="waste-item">
+                    <span>Sigarettenpak</span>
+                    <span class="waste-count">2</span>
+                </div>
+                <div class="waste-item">
+                    <span>Chipszak</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Pleister</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Glas</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Flessendop</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Belastingbrief</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Zacht verpakkingsspul</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Koffie beker</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Tandenstoker</span>
+                    <span class="waste-count">1</span>
+                </div>
+                <div class="waste-item">
+                    <span>Houtblok</span>
+                    <span class="waste-count">1</span>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Ook zie je dat mensen van alles in de natuur achterlaten als ze van afval af willen. 
+                Je ziet ook dingen die niet heel logisch zijn zoals tandenstoker, houtblok, belastingbrief!</strong></p>
             </div>
         </section>
 
-        <section id="actie" class="section">
-            <div class="container">
-                <h2>Doe Mee aan de Verandering</h2>
-                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
-                    Elke bijdrage, hoe klein ook, maakt verschil. Start vandaag nog!
-                </p>
-                <div style="text-align: center;">
-                    <a href="https://www.nederlanschoon.nl" class="cta-button" target="_blank">Vind Lokale Acties</a>
-                    <a href="https://www.buitenbeter.nl" class="cta-button" target="_blank" style="margin-left: 1rem;">Meld Vervuiling</a>
+        <section id="actie" class="action-section">
+            <h2>💪 Tijd voor Actie!</h2>
+            
+            <div class="info-box" style="background: rgba(255,255,255,0.9); color: #333;">
+                <h3>🇫🇷 Voorbeeld: Frankrijk</h3>
+                <p>In sommige landen zoals Frankrijk hebben ze geen statiegeld en daar zie je veel blikjes 
+                en flesjes in de natuur. Het gevolg is microplastic - een groot probleem.</p>
+            </div>
+
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+                Daarom roepen we op om bijvoorbeeld afval te scheiden en meer te letten hoeveel we 
+                plastic gebruiken. Want veel mensen beseffen niet hoe vervuilend het is. Mensen 
+                denken er niet dagelijks aan en dat moet wel gebeuren. <strong>Dus scheidt je afval!</strong>
+            </p>
+
+            <div class="warning-box" style="background: rgba(255,255,255,0.9); color: #333;">
+                <h3>♻️ Waarom Afval Scheiden?</h3>
+                <p>Als het wordt gescheiden kan het worden hergebruikt en statiegeld helpt daarbij.</p>
+            </div>
+
+            <p style="font-size: 1.2rem; margin: 2rem 0; text-align: center;">
+                <strong>In deze tekst heb je veel gelezen over het gevolg - nu is het tijd om zelf in actie te komen!</strong>
+            </p>
+
+            <h3 style="color: white; text-align: center;">Wat kan ik doen?</h3>
+            
+            <div class="action-grid">
+                <div class="action-card">
+                    <h3>💰 Statiegeld Actie</h3>
+                    <p>Ga met je vrienden op pad om plastic statiegeldflessen of statiegeldblikjes te 
+                    verzamelen bij huizen of op straat. Zo verdien je geld van het statiegeld en 
+                    recycle je tegelijk ook plastic! Handig als je wat geld nodig hebt en een gezellig 
+                    uitje met je vrienden!</p>
                 </div>
+                
+                <div class="action-card">
+                    <h3>🗑️ Afval Opruimen</h3>
+                    <p>Zie je afval dat in de natuur ligt? Grote kans dat er dicht bij een prullenbak is, 
+                    want de gemeente doet er veel aan om afval niet in de natuur te laten, maar 
+                    mensen zijn vaak lui om een paar meter te lopen naar de afvalbak. <strong>Pak het op en 
+                    gooi het weg!</strong></p>
+                </div>
+                
+                <div class="action-card">
+                    <h3>♻️ Afval Scheiden</h3>
+                    <p>Scheidt je afval thuis! Als het wordt gescheiden kan het worden hergebruikt. 
+                    Statiegeld helpt hierbij - in landen zonder statiegeld ligt veel meer afval in de natuur.</p>
+                </div>
+                
+                <div class="action-card">
+                    <h3>📢 Verspreid het Woord</h3>
+                    <p>Vertel je vrienden en familie over het plastic probleem. Veel mensen beseffen niet 
+                    hoe vervuilend plastic is. Mensen denken er niet dagelijks aan en dat moet wel gebeuren!</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="#" class="cta-button bounce">🌊 Begin Vandaag met Actie! 🌊</a>
+                <a href="#" class="cta-button">📱 Deel deze Website</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Stop Zwerfafval. Samen voor een schoner Nederland. 🇳🇱</p>
-            <p>Gemaakt met ❤️ voor onze mooie natuur</p>
+            <p>© 2025 - Stop de Plasticsoep | Gemaakt met ❤️ voor onze planeet</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Samen kunnen we het verschil maken. Elke kleine actie telt! 🌍
+            </p>
+            <div style="margin-top: 1rem; font-size: 0.8rem;">
+                <p><strong>Bronnen gebruikt in dit onderzoek:</strong></p>
+                <p>WWF, Greenpeace, EWG Research, NOS Stories, en eigen veldonderzoek in Utrecht</p>
+            </div>
         </div>
     </footer>
 
-    <a href="#" class="scroll-to-top" id="scrollToTop">↑</a>
-
     <script>
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -434,26 +911,18 @@
             });
         });
 
-        // Scroll to top button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Add hover effects to stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotateY(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
             });
         });
 
-        // Add some interactive animations
+        // Animate plastic lifespan items on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -462,18 +931,46 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animationPlayState = 'running';
                 }
             });
         }, observerOptions);
 
-        // Observe all sections for animation
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
+        document.querySelectorAll('.plastic-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add click animation to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.textContent.includes('Begin Vandaag')) {
+                    e.preventDefault();
+                    alert('Geweldig! Je bent klaar om actie te ondernemen! 🎉\n\nBegin met:\n• Afval scheiden thuis\n• Statiegeldflessen verzamelen\n• Zwerfafval opruimen\n• Het woord verspreiden!');
+                } else if (this.textContent.includes('Deel')) {
+                    e.preventDefault();
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Stop de Plasticsoep!',
+                            text: 'Samen kunnen we het plastic probleem oplossen. Bekijk deze belangrijke informatie!',
+                            url: window.location.href
+                        });
+                    } else {
+                        // Fallback for browsers that don't support Web Share API
+                        navigator.clipboard.writeText(window.location.href).then(() => {
+                            alert('Link gekopieerd! Deel hem met je vrienden! 📋');
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add parallax effect to header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
